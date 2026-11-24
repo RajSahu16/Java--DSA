@@ -295,3 +295,67 @@
 //         search(matrix, 11);
 //     }
 // }
+///////Spiral Mathrix///////
+import java.util.*;
+public class Array {
+public static void printSpiral(int matix[][]) {
+    int startRow=0;
+    int startCol=0;
+    int endRow=matix.length-1;
+    int endCol=matix[0].length-1;
+    while ( startRow<=endRow && startCol<=endCol ) {
+        for(int j=startCol;j<=endCol;j++){
+            System.out.print(matix[startRow][j]+" ");
+        }
+        // right
+        for(int i=startRow+1;i<endRow;i++){
+    System.out.print(matix[i][endCol]+" ");
+        }
+        // bottom
+        for(int j=endCol-1;j>=startCol;j--){
+            if(startRow==endRow){
+                break;
+            }
+            System.out.print(matix[endRow][j]+" ");
+            
+        }
+        //left
+        for(int i=endRow-1;i>=startRow+1;i--){
+            if(startCol==endCol){
+                break;
+            }
+            System.out.print(matix[i][startCol]+" ");
+        }
+      startCol++;
+      startRow++;
+      endCol--;
+      endRow--;  
+    }
+    System.out.println();
+}
+public static int diagonalsum(int matrix[][]){
+    int sum=0;
+//     for(int i=0;i<matrix.length;i++){
+//         for(int j=0;j<matrix[0].length;j++){
+//             if (i==j) {
+//                 sum+=matrix[i][j];
+                
+//             }
+//             else if(i+j==matrix.length-1){
+//                 sum+=matrix[i][j];
+//             } 
+//         }
+// }
+for(int i=0; i<matrix.length;i++){
+    sum+=matrix[i][i];
+    if(i!=matrix.length-1-i){
+    sum+=matrix[i][matrix.length-1-i];}
+}
+ return sum   ;    
+}
+    public static void main(String[] args) {
+        int matrix[][]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        // printSpiral(matrix);
+       System.out.println( diagonalsum(matrix));
+    }
+}
