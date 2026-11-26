@@ -335,6 +335,7 @@ public static void printSpiral(int matix[][]) {
 }
 public static int diagonalsum(int matrix[][]){
     int sum=0;
+    // high time comlexity hai
 //     for(int i=0;i<matrix.length;i++){
 //         for(int j=0;j<matrix[0].length;j++){
 //             if (i==j) {
@@ -345,7 +346,7 @@ public static int diagonalsum(int matrix[][]){
 //                 sum+=matrix[i][j];
 //             } 
 //         }
-// }
+// }   low time complexity hai 
 for(int i=0; i<matrix.length;i++){
     sum+=matrix[i][i];
     if(i!=matrix.length-1-i){
@@ -353,9 +354,30 @@ for(int i=0; i<matrix.length;i++){
 }
  return sum   ;    
 }
+public static boolean staircaseSearch (int matrix[][],int key) {
+    int row = 0, col =matrix[0].length-1;
+    while ((row<matrix.length && col>=0)) {
+        if(matrix[row][col]==key){
+            System.out.println("found key at ("+row+","+col+")");
+            return true;
+        }
+        else if (key < matrix[row][col]){
+            System.out.println(matrix[row][col]);
+           col--; 
+        }
+        else{
+            System.out.println(matrix[row][col]);
+            row++;
+        }
+    }
+    System.out.println("key not found!");
+    return  false;
+}
     public static void main(String[] args) {
-        int matrix[][]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        int matrix[][]={{10,20,30,40},{15,25,35,45},{27,29,37,48},{32,33,39,50}};
         // printSpiral(matrix);
-       System.out.println( diagonalsum(matrix));
+        int key =27;
+        staircaseSearch(matrix, key);
+     //  System.out.println( diagonalsum(matrix));
     }
 }
